@@ -41,6 +41,9 @@ public class Music : MonoBehaviour
     void Update()
     {
         if (!myAudio.isPlaying) playRandomMyAnonymousMusic();
+        
+        if (Input.GetKeyDown(KeyCode.F)) playRandomMyAnonymousMusic();
+        
     }
  
     void playRandomMyAnonymousMusic()
