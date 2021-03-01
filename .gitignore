@@ -22,6 +22,8 @@ Horkuin/[Aa]ssets/Malbers Animations/
 Horkuin/[Aa]ssets/MicroSplat/
 Horkuin/[Aa]ssets/Samples/
 Horkuin/[Aa]ssets/Hunter/
+Horkuin/[Aa]ssets/Domestic Animal Pack 1/
+Horkuin/[Aa]ssets/InfinityPBR/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
