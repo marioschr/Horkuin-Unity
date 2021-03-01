@@ -18,9 +18,11 @@ Horkuin/[Aa]ssets/AQUAS/
 Horkuin/[Aa]ssets/Editor/
 Horkuin/[Aa]ssets/PostProcessing/
 Horkuin/[Aa]ssets/Textures/
-Horkuin/[Aa]ssets/SkySerie Freebie/
+Horkuin/[Aa]ssets/Malbers Animations/
 Horkuin/[Aa]ssets/MicroSplat/
 Horkuin/[Aa]ssets/Samples/
+Horkuin/[Aa]ssets/Hunter/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 

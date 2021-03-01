@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using AquariusMax.Medieval;
 using UnityEngine;
@@ -8,7 +9,14 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI, optionsMenuUI;
     public static bool GameIsPaused = false;
-    public DemoCharacter characterScript;
+    public Animator character;
+
+    private GameObject[] horses;
+
+    private void Start()
+    {
+        horses = GameObject.FindGameObjectsWithTag("Animal");
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,9 +34,13 @@ public class PauseMenu : MonoBehaviour
     public void Resume() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        foreach (GameObject horse in horses)
+        {
+            horse.GetComponent<AudioSource>().UnPause();
+        }
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
-        characterScript.enabled = true;
+        character.enabled = true;
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
@@ -36,8 +48,12 @@ public class PauseMenu : MonoBehaviour
     public void Pause() {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        foreach (GameObject horse in horses)
+        {
+            horse.GetComponent<AudioSource>().Pause();
+        }
         pauseMenuUI.SetActive(true);
-        characterScript.enabled = false;
+        character.enabled = false;
         Time.timeScale = 0f;
         GameIsPaused = true;
     }

@@ -42,7 +42,7 @@ public class Music : MonoBehaviour
     {
         if (!myAudio.isPlaying) playRandomMyAnonymousMusic();
         
-        if (Input.GetKeyDown(KeyCode.F)) playRandomMyAnonymousMusic();
+        if (Input.GetKeyDown(KeyCode.M)) playRandomMyAnonymousMusic();
         
     }
  
