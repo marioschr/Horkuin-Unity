@@ -10,10 +10,13 @@ public class DogAnimationsScript : MonoBehaviour
     public GameObject[] positions;
     private Transform transform;
     private NavMeshAgent navMeshAgent;
+    private Animator animator;
+    
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         transform = positions[Random.Range(0, positions.Length)].transform;
         navMeshAgent.SetDestination(transform.position);
     }
@@ -26,5 +29,6 @@ public class DogAnimationsScript : MonoBehaviour
             transform = positions[Random.Range(0, positions.Length)].transform;
             navMeshAgent.SetDestination(transform.position);
         }
+        animator.SetFloat("Move Speed", navMeshAgent.velocity.magnitude);
     }
 }

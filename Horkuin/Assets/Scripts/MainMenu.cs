@@ -10,8 +10,8 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadSceneAsync(1);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2 , LoadSceneMode.Additive);
+        QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GraphicsQuality", 4), true);
+
     }
     
     public void QuitGame()
