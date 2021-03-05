@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoading : MonoBehaviour
 {
+    public Animator animator;
     [SerializeField]
     private Image progressBar;
     void Start()
@@ -22,5 +23,6 @@ public class SceneLoading : MonoBehaviour
             progressBar.fillAmount = gameLevel.progress * 10 / 9;
             yield return null;
         }
+        animator.SetTrigger("Fade Out");
     }
 }
