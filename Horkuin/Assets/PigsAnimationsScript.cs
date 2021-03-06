@@ -11,7 +11,7 @@ public class PigsAnimationsScript : MonoBehaviour
     private Transform transform;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,26 +20,31 @@ public class PigsAnimationsScript : MonoBehaviour
         transform = positions[Random.Range(0, positions.Length)].transform;
         navMeshAgent.SetDestination(transform.position);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (navMeshAgent.remainingDistance < 0.5f)
         {
-            transform = positions[Random.Range(0, positions.Length)].transform;
-            navMeshAgent.SetDestination(transform.position);
+            if (Random.Range(0f, 1f) < 0.2f)
+            {
+                animator.SetBool("Eating", true);
+                navMeshAgent.speed = 0;
+                Invoke("StopEating",3.333f);
+            }
+            else if (animator.GetBool("Eating") == false)
+            {
+                navMeshAgent.speed = 0.7f;
+                transform = positions[Random.Range(0, positions.Length)].transform;
+                navMeshAgent.SetDestination(transform.position);
+            }
         }
         else
         {
-            if (Random.Range(0f, 1f) < 0.005f)
-            {
-                animator.SetFloat("Move Speed", 0f);
-                animator.SetTrigger("Eat");
-            }
-            else
-            {
-                animator.SetFloat("Move Speed", navMeshAgent.velocity.magnitude);
-            }
+            animator.SetFloat("Move Speed", navMeshAgent.velocity.magnitude);
         }
+    }
+
+    void StopEating(){
+        animator.SetBool("Eating", false);
     }
 }
