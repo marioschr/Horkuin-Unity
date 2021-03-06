@@ -15,6 +15,7 @@ public class PigsAnimationsScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<Transform>().transform.position = positions[Random.Range(0, positions.Length)].transform.position;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         transform = positions[Random.Range(0, positions.Length)].transform;
@@ -33,7 +34,7 @@ public class PigsAnimationsScript : MonoBehaviour
             }
             else if (animator.GetBool("Eating") == false)
             {
-                navMeshAgent.speed = 0.7f;
+                navMeshAgent.speed = Random.Range(0.6f, 0.7f);
                 transform = positions[Random.Range(0, positions.Length)].transform;
                 navMeshAgent.SetDestination(transform.position);
             }

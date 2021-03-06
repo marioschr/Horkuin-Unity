@@ -27,6 +27,8 @@ Horkuin/[Aa]ssets/Conifers/
 Horkuin/[Aa]ssets/InfinityPBR/
 Horkuin/[Aa]ssets/Waterfall/
 Horkuin/[Aa]ssets/YughuesFreeBushes2018/
+Horkuin/[Aa]ssets/PostProcessing Profiles/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 

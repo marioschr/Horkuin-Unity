@@ -383,7 +383,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Pig_MAt
-    second: {fileID: 2100000, guid: 5448e15cbba8b894eb7bf01927565b8f, type: 2}
+    second: {fileID: 2100000, guid: 20e1cfad8b8af1b4494562b73de4bc2b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -393,7 +393,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 1
+    optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -981,8 +981,8 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
+    skinWeightsMode: 1
+    maxBonesPerVertex: 1
     minBoneWeight: 0.001
     meshOptimizationFlags: -1
     indexFormat: 1
@@ -1004,7 +1004,222 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Pig(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_HP
+      parentName: Pig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_SHJntGrp
+      parentName: Pig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_ROOTSHJnt
+      parentName: Pig_SHJntGrp
+      position: {x: 0, y: 0.38706672, z: -0.045000017}
+      rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Spine_01SHJnt
+      parentName: Pig_ROOTSHJnt
+      position: {x: 5.9164567e-33, y: 0.018253757, z: 0.09899999}
+      rotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Spine_02SHJnt
+      parentName: Pig_Spine_01SHJnt
+      position: {x: -0.09895764, y: 2.1991548e-17, z: 0.0019890522}
+      rotation: {x: 0.99972975, y: -1.7911801e-10, z: -0.023248471, w: -4.1652844e-12}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Spine_03SHJnt
+      parentName: Pig_Spine_02SHJnt
+      position: {x: -0.099125385, y: -1.16199e-16, z: -0.0025471102}
+      rotation: {x: -0.000000004143067, y: -0.08837017, z: 0.000000006187617, w: 0.99608773}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Spine_04SHJnt
+      parentName: Pig_Spine_03SHJnt
+      position: {x: -0.09962814, y: 9.8146866e-17, z: 0.008528508}
+      rotation: {x: -0.000000011981254, y: -0.048025377, z: -0.0000000013694776, w: 0.9988461}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Spine_TopSHJnt
+      parentName: Pig_Spine_04SHJnt
+      position: {x: -0.09946286, y: 2.292736e-17, z: 0.014879164}
+      rotation: {x: 0.9872623, y: -2.4281946e-16, z: -0.15910102, w: 1.975113e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_Clavicle_01_01SHJnt
+      parentName: Pig_Spine_TopSHJnt
+      position: {x: -3.5527136e-17, y: -0.032575745, z: 1.4210854e-16}
+      rotation: {x: 0.31823456, y: -0.31823456, z: 0.7724361, w: 0.4481028}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_FrontLeg_HipSHJnt
+      parentName: Pig_l_Clavicle_01_01SHJnt
+      position: {x: -0.036446046, y: 0.07075294, z: 0.13884507}
+      rotation: {x: -0.6271425, y: 0.4723488, z: 0.1810024, w: 0.59229815}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_FrontLeg_KneeSHJnt
+      parentName: Pig_l_FrontLeg_HipSHJnt
+      position: {x: -0.13895947, y: -3.375078e-16, z: -3.952394e-16}
+      rotation: {x: -0.0026117258, y: 0.026926959, z: -0.0045200875, w: 0.9996238}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_FrontLeg_AnkleSHJnt
+      parentName: Pig_l_FrontLeg_KneeSHJnt
+      position: {x: -0.09940644, y: -3.0198067e-16, z: 7.105427e-17}
+      rotation: {x: -0.009082149, y: -0.09451229, z: 0.028375937, w: 0.9950778}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_FrontLeg_BallSHJnt
+      parentName: Pig_l_FrontLeg_AnkleSHJnt
+      position: {x: -0.06050888, y: -2.1316282e-16, z: 0.0034674709}
+      rotation: {x: 6.593162e-17, y: 0.7071068, z: -6.593162e-17, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_Clavicle_01_01SHJnt
+      parentName: Pig_Spine_TopSHJnt
+      position: {x: -1.4210854e-16, y: 0.032575745, z: -1.4210854e-16}
+      rotation: {x: -0.31823453, y: 0.3182346, z: 0.4481027, w: 0.7724361}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_FrontLeg_HipSHJnt
+      parentName: Pig_r_Clavicle_01_01SHJnt
+      position: {x: 0.036446046, y: 0.07075294, z: 0.13884507}
+      rotation: {x: -0.4723486, y: 0.62714267, z: 0.59229803, w: 0.18100253}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_FrontLeg_KneeSHJnt
+      parentName: Pig_r_FrontLeg_HipSHJnt
+      position: {x: -0.13895947, y: -3.907985e-16, z: -2.6645352e-17}
+      rotation: {x: 0.0026118301, y: 0.026927555, z: 0.004519283, w: 0.9996238}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_FrontLeg_AnkleSHJnt
+      parentName: Pig_r_FrontLeg_KneeSHJnt
+      position: {x: -0.09940644, y: -5.32907e-16, z: 1.0658141e-16}
+      rotation: {x: 0.009082149, y: -0.09451229, z: -0.028375937, w: 0.9950778}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_FrontLeg_BallSHJnt
+      parentName: Pig_r_FrontLeg_AnkleSHJnt
+      position: {x: -0.06050888, y: -4.6185276e-16, z: 0.0034674709}
+      rotation: {x: 5.0598688e-17, y: 0.7071068, z: -5.0598688e-17, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Neck_01SHJnt
+      parentName: Pig_Spine_TopSHJnt
+      position: {x: -0.05402952, y: -4.829808e-17, z: -0.0024595128}
+      rotation: {x: 7.850463e-17, y: -0.7071068, z: 7.850463e-17, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Neck_02SHJnt
+      parentName: Pig_Neck_01SHJnt
+      position: {x: -0.0024595128, y: 5.1045464e-18, z: 0.05402952}
+      rotation: {x: 0, y: 0, z: 1.110223e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Neck_TopSHJnt
+      parentName: Pig_Neck_02SHJnt
+      position: {x: -0.0024595128, y: 2.0122889e-17, z: 0.05402952}
+      rotation: {x: 0, y: 0, z: 1.110223e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Head_JawSHJnt
+      parentName: Pig_Neck_TopSHJnt
+      position: {x: 0.08854147, y: -7.522848e-17, z: 0.07881355}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_Head_TopSHJnt
+      parentName: Pig_Neck_TopSHJnt
+      position: {x: -0.053725097, y: -1.334237e-17, z: 0.06315629}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_Eye_01SHJnt
+      parentName: Pig_Head_TopSHJnt
+      position: {x: -0.04788515, y: -0.048993487, z: 0.05939351}
+      rotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_Eye_01SHJnt
+      parentName: Pig_Head_TopSHJnt
+      position: {x: 0.04788515, y: -0.048993487, z: 0.05939351}
+      rotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_Ear_01_01SHJnt
+      parentName: Pig_Head_TopSHJnt
+      position: {x: -0.0702593, y: -0.011704663, z: 0.005873759}
+      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_Ear_01_02SHJnt
+      parentName: Pig_l_Ear_01_01SHJnt
+      position: {x: 0.017792938, y: 0.036118682, z: -0.009055531}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_Ear_01_01SHJnt
+      parentName: Pig_Head_TopSHJnt
+      position: {x: 0.0702593, y: -0.011704663, z: 0.005873759}
+      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_Ear_01_02SHJnt
+      parentName: Pig_r_Ear_01_01SHJnt
+      position: {x: -0.017792938, y: 0.036118682, z: -0.009055531}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_HindLeg_HipSHJnt
+      parentName: Pig_ROOTSHJnt
+      position: {x: -0.089999996, y: -0.044999998, z: -0.054277368}
+      rotation: {x: 0.44818944, y: -0.4698684, z: 0.50191414, w: 0.5713424}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_HindLeg_Knee1SHJnt
+      parentName: Pig_l_HindLeg_HipSHJnt
+      position: {x: -0.15082243, y: 1.7763568e-17, z: 0}
+      rotation: {x: 0.0030699365, y: -0.4070906, z: -0.0068780463, w: 0.9133567}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_HindLeg_Knee2SHJnt
+      parentName: Pig_l_HindLeg_Knee1SHJnt
+      position: {x: -0.15773453, y: 0, z: 0}
+      rotation: {x: -1.1003088e-17, y: 0.31809202, z: -7.805906e-17, w: 0.94805986}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_HindLeg_AnkleSHJnt
+      parentName: Pig_l_HindLeg_Knee2SHJnt
+      position: {x: -0.08696922, y: -1.7763568e-17, z: 4.973799e-16}
+      rotation: {x: 0.012474864, y: 0.7189309, z: 0.048303172, w: 0.693289}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_l_HindLeg_BallSHJnt
+      parentName: Pig_l_HindLeg_AnkleSHJnt
+      position: {x: -0.030192591, y: 0, z: 0.0064311246}
+      rotation: {x: 1.543001e-16, y: 0.7071068, z: -1.543001e-16, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_HindLeg_HipSHJnt
+      parentName: Pig_ROOTSHJnt
+      position: {x: 0.089999996, y: -0.044999998, z: -0.054277368}
+      rotation: {x: 0.4698684, y: -0.44818944, z: 0.5713424, w: 0.50191414}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_HindLeg_Knee1SHJnt
+      parentName: Pig_r_HindLeg_HipSHJnt
+      position: {x: -0.15082243, y: 0, z: -3.5527136e-17}
+      rotation: {x: -0.005657494, y: -0.29566258, z: 0.007491708, w: 0.9552463}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_HindLeg_Knee2SHJnt
+      parentName: Pig_r_HindLeg_Knee1SHJnt
+      position: {x: -0.15773453, y: 0, z: -7.105427e-17}
+      rotation: {x: -0.020903673, y: 0.83382756, z: -0.043958876, w: 0.5498748}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_r_HindLeg_AnkleSHJnt
+      parentName: Pig_r_HindLeg_Knee2SHJnt
+      position: {x: -0.08696922, y: -3.5527136e-17, z: 4.973799e-16}
+      rotation: {x: -1.7786697e-18, y: 0.020426149, z: -1.3493836e-16, w: 0.9997914}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_tAIL_01_01SHJnt
+      parentName: Pig_ROOTSHJnt
+      position: {x: -3.887892e-17, y: 0.04671444, z: -0.09084552}
+      rotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_tAIL_01_02SHJnt
+      parentName: Pig_tAIL_01_01SHJnt
+      position: {x: -0.019154092, y: 0.057711825, z: -0.021608032}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_LP_msh
+      parentName: Pig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pig_SHP
+      parentName: Pig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -1013,7 +1228,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 0.01
-    rootMotionBoneName: Pig_HP
+    rootMotionBoneName: Pig_LP_msh
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 0
