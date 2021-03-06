@@ -7,13 +7,26 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartGame()
+    public Animator animator;
+
+    private void Awake()
     {
-        SceneManager.LoadSceneAsync(1);
+        animator.SetTrigger("Fade In");
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GraphicsQuality", 4), true);
 
     }
-    
+
+    public void StartGame()
+    {
+        animator.SetTrigger("Fade Out");
+        Invoke("LoadScene", 3f);
+    }
+
+    void LoadScene()
+    {
+        SceneManager.LoadSceneAsync(1);
+    }
+
     public void QuitGame()
     {
         Application.Quit();
