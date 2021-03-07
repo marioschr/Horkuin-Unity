@@ -22,7 +22,7 @@ public class GoatMovement : MonoBehaviour
     
     void Update()
     {
-        if (navMeshAgent.remainingDistance < 0.5f)
+        if (navMeshAgent.remainingDistance < 0.8f)
         {
             if (Random.Range(0f, 1f) < 0.2f)
             {
@@ -36,9 +36,10 @@ public class GoatMovement : MonoBehaviour
                 transform = positions[Random.Range(0, positions.Length)].transform;
                 navMeshAgent.SetDestination(transform.position);
             }
+        } else if (navMeshAgent.remainingDistance >= 0.8f && navMeshAgent.speed == 0) {
+            navMeshAgent.speed = Random.Range(0.6f, 0.7f);
         }
-        else
-        {
+        else {
             animator.SetFloat("Move Speed", navMeshAgent.velocity.magnitude);
         }
     }
