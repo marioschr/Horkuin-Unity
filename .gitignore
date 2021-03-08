@@ -30,7 +30,7 @@ Horkuin/[Aa]ssets/YughuesFreeBushes2018/
 Horkuin/[Aa]ssets/PostProcessing Profiles/
 Horkuin/[Aa]ssets/Characters/
 Horkuin/[Aa]ssets/USSC Brig Sloop/
-Horkuin/[Aa]ssets/snoop/
+Horkuin/[Aa]ssets/3DForge/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
