@@ -28,9 +28,15 @@ Horkuin/[Aa]ssets/InfinityPBR/
 Horkuin/[Aa]ssets/Waterfall/
 Horkuin/[Aa]ssets/YughuesFreeBushes2018/
 Horkuin/[Aa]ssets/PostProcessing Profiles/
-Horkuin/[Aa]ssets/Characters/
 Horkuin/[Aa]ssets/USSC Brig Sloop/
 Horkuin/[Aa]ssets/3DForge/
+Horkuin/[Aa]ssets/Characters/Andan/
+Horkuin/[Aa]ssets/Characters/Armored Medieval Warrior/
+Horkuin/[Aa]ssets/Characters/BasicBandit/
+Horkuin/[Aa]ssets/Characters/beggar/
+Horkuin/[Aa]ssets/Characters/snoop/
+Horkuin/[Aa]ssets/Characters/Tyra/
+Horkuin/[Aa]ssets/Characters/warlock/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
