@@ -472,7 +472,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Arab_Ready_Main_Mat
-    second: {fileID: 2100000, guid: 677983ffab0d543449c38a039b5f22f5, type: 2}
+    second: {fileID: 2100000, guid: 84d07ede5a97fd54daa51caa45b0228a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -482,7 +482,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mane_Arab_Mat
-    second: {fileID: 2100000, guid: a5420830f8c886748ab2702e9f40ea8c, type: 2}
+    second: {fileID: 2100000, guid: 84d07ede5a97fd54daa51caa45b0228a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -491,8 +491,8 @@ ModelImporter:
   materials:
     materialImportMode: 1
     materialName: 0
-    materialSearch: 1
-    materialLocation: 0
+    materialSearch: 2
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
