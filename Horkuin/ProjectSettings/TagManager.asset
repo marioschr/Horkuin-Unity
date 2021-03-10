@@ -10,6 +10,7 @@ TagManager:
   - Music
   - Animal
   - Water
+  - Dog
   layers:
   - Default
   - TransparentFX

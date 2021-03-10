@@ -418,12 +418,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: german_Alpha_Mat
-    second: {fileID: 2100000, guid: 88796c1d73378d0479216e1428923c0f, type: 2}
+    second: {fileID: 2100000, guid: 3388b97b501bdf542a31cbd090170593, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
