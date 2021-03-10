@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class PigsAnimationsScript : MonoBehaviour
 {
     public GameObject[] positions;
-    private Transform transform;
+    private Transform positionsTransform;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
 
@@ -18,8 +18,8 @@ public class PigsAnimationsScript : MonoBehaviour
         GetComponent<Transform>().transform.position = positions[Random.Range(0, positions.Length)].transform.position;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        transform = positions[Random.Range(0, positions.Length)].transform;
-        navMeshAgent.SetDestination(transform.position);
+        positionsTransform = positions[Random.Range(0, positions.Length)].transform;
+        navMeshAgent.SetDestination(positionsTransform.position);
     }
     
     void Update()
@@ -35,8 +35,8 @@ public class PigsAnimationsScript : MonoBehaviour
             else if (animator.GetBool("Eating") == false)
             {
                 navMeshAgent.speed = Random.Range(0.6f, 0.7f);
-                transform = positions[Random.Range(0, positions.Length)].transform;
-                navMeshAgent.SetDestination(transform.position);
+                positionsTransform = positions[Random.Range(0, positions.Length)].transform;
+                navMeshAgent.SetDestination(positionsTransform.position);
             }
         } else if (navMeshAgent.remainingDistance >= 0.8f && navMeshAgent.speed == 0) {
             navMeshAgent.speed = Random.Range(0.6f, 0.7f);
