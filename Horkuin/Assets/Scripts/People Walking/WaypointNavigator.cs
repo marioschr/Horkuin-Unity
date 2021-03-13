@@ -19,7 +19,7 @@ public class WaypointNavigator : MonoBehaviour
 
     private void Start()
     {
-        direction = Mathf.RoundToInt(Random.Range(0f, 1f));
+        direction = Random.Range(0, 2);
         navMeshAgent.SetDestination(currentWaypoint.GetPosition());
     }
 
@@ -32,7 +32,7 @@ public class WaypointNavigator : MonoBehaviour
 
             if (currentWaypoint.branches != null && currentWaypoint.branches.Count > 0)
             {
-                shouldBranch = Random.Range(0f, 1f) <= currentWaypoint.branchRation ? true : false;
+                shouldBranch = Random.Range(0f, 1f) <= currentWaypoint.branchRation;
             }
 
             if (shouldBranch)
@@ -50,21 +50,22 @@ public class WaypointNavigator : MonoBehaviour
                     }
                     else
                     {
-                        currentWaypoint = currentWaypoint.previousWaypoint;
                         direction = 1;
+                        currentWaypoint = currentWaypoint.previousWaypoint;
                     }
                 }
                 else if (direction == 1)
                 {
-                    if (currentWaypoint.nextWaypoint != null)
+                    if (currentWaypoint.previousWaypoint != null)
                     {
                         currentWaypoint = currentWaypoint.previousWaypoint;
                     }
                     else
                     {
-                        currentWaypoint = currentWaypoint.nextWaypoint;
                         direction = 0;
-                    }                }
+                        currentWaypoint = currentWaypoint.nextWaypoint;
+                    }
+                }
             }
             
             navMeshAgent.SetDestination(currentWaypoint.GetPosition());
