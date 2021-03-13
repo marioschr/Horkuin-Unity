@@ -18,13 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        animator.SetTrigger("Fade Out");
-        Invoke("LoadScene", 3f);
-    }
-
-    void LoadScene()
-    {
-        SceneManager.LoadSceneAsync(1);
+        GameManager.instance.LoadGame();
     }
 
     public void QuitGame()

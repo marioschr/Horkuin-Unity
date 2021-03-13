@@ -9,20 +9,18 @@ using UnityEngine.SceneManagement;
 public class SceneLoading : MonoBehaviour
 {
     public Animator animator;
-    [SerializeField]
-    private Image progressBar;
 
     private void Awake()
     {
         animator.SetTrigger("Fade In");
     }
 
-    void Start()
+    /*void Start()
     {
         StartCoroutine(LoadAsyncOperation());
-    }
+    }*/
 
-    IEnumerator LoadAsyncOperation()
+    /*IEnumerator LoadAsyncOperation()
     {
         AsyncOperation gameLevel = SceneManager.LoadSceneAsync(2);
 
@@ -32,5 +30,5 @@ public class SceneLoading : MonoBehaviour
             yield return null;
         }
         animator.SetTrigger("Fade Out");
-    }
+    }*/
 }

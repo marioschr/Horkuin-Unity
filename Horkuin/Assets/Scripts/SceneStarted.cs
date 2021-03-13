@@ -1,21 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SceneStarted : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Animator animator;
-    void Start()
-    {       
+    public static SceneStarted instance;
+    public Camera camera;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+    public void Fade()
+    {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         animator.SetTrigger("Fade In");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        camera.GetComponent<AudioListener>().enabled = true;
     }
 }

@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
     public Animator character;
 
     private GameObject[] horses;
-
+    
     private void Start()
     {
         horses = GameObject.FindGameObjectsWithTag("Animal");
