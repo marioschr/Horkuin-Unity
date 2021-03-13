@@ -32,7 +32,7 @@ public class PedestrianSpawner : MonoBehaviour
             while (count < Mathf.RoundToInt(pedestriansToSpawn / pedestrianPrefabs.Length))
             {
                 GameObject obj = Instantiate(prefab);
-                Transform child = transform.GetChild(Random.Range(0, transform.childCount - 1));
+                Transform child = transform.GetChild(Random.Range(0, transform.childCount));
                 obj.transform.position = child.position;
                 obj.GetComponent<NavMeshAgent>().enabled = false;
                 obj.GetComponent<WaypointNavigator>().currentWaypoint = child.GetComponent<Waypoint>();
