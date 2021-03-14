@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     
     public void LoadGame()
     {
+        GameObject spawns= new GameObject("Spawns");
+        spawns.gameObject.tag = "Spawns";
         loadingScreen.gameObject.SetActive(true);
         scenesLoading.Add(SceneManager.UnloadSceneAsync(1));
         scenesLoading.Add(SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive));

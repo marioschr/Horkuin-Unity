@@ -65,7 +65,9 @@ public class PauseMenu : MonoBehaviour
 
     public void BackToMenu()
     {
+        SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        Destroy(GameObject.FindGameObjectWithTag("Spawns"));
+        SceneManager.UnloadSceneAsync(2);
     }
 }
