@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI, optionsMenuUI;
-    public static bool GameIsPaused = false;
+    public GameObject pauseMenuUI, optionsMenuUI, helpMenuUI,helpBack,helpResume;
+    public static bool GameIsPaused = false, HelpIsOpen = false;
     public Animator character;
 
     private GameObject[] horses;
@@ -23,11 +23,45 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (GameIsPaused) {
-                Resume();
-            } else {
-                Pause();
+            if (!HelpIsOpen) {
+                if (GameIsPaused) {
+                    Resume();
+                } else {
+                    Pause();
+                }
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.F1))
+        {
+            if (!GameIsPaused) {
+                if (HelpIsOpen) {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    foreach (GameObject horse in horses)
+                    {
+                        horse.GetComponent<AudioSource>().UnPause();
+                    }
+                    helpResume.SetActive(false);
+                    helpMenuUI.SetActive(false);
+                    character.enabled = true;
+                    Time.timeScale = 1f;
+                    HelpIsOpen = false;
+                }
+                else {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    foreach (GameObject horse in horses)
+                    {
+                        horse.GetComponent<AudioSource>().Pause();
+                    }
+                    helpMenuUI.SetActive(true);
+                    helpBack.SetActive(false);
+                    helpResume.SetActive(true);
+                    character.enabled = false;
+                    Time.timeScale = 0f;
+                    HelpIsOpen = true;
+                }
+            } 
         }
     }
 
@@ -43,6 +77,21 @@ public class PauseMenu : MonoBehaviour
         character.enabled = true;
         Time.timeScale = 1f;
         GameIsPaused = false;
+    }
+
+    public void HelpMenuResume() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        foreach (GameObject horse in horses)
+        {
+            horse.GetComponent<AudioSource>().UnPause();
+        }
+        helpResume.SetActive(false);
+        helpBack.SetActive(true);
+        helpMenuUI.SetActive(false);
+        character.enabled = true;
+        Time.timeScale = 1f;
+        HelpIsOpen = false;
     }
 
     public void Pause() {
