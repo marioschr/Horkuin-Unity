@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI, optionsMenuUI, helpMenuUI,helpBack,helpResume;
+    public GameObject pauseMenuUI, optionsMenuUI, helpMenuUI,helpBack,helpResume, audio;
     public static bool GameIsPaused = false, HelpIsOpen = false;
     public Animator character;
 
@@ -41,6 +41,7 @@ public class PauseMenu : MonoBehaviour
                     {
                         horse.GetComponent<AudioSource>().UnPause();
                     }
+		    audio.SetActive(true);
                     helpResume.SetActive(false);
                     helpMenuUI.SetActive(false);
                     character.enabled = true;
@@ -57,6 +58,7 @@ public class PauseMenu : MonoBehaviour
                     helpMenuUI.SetActive(true);
                     helpBack.SetActive(false);
                     helpResume.SetActive(true);
+		    audio.SetActive(false);
                     character.enabled = false;
                     Time.timeScale = 0f;
                     HelpIsOpen = true;
@@ -74,6 +76,7 @@ public class PauseMenu : MonoBehaviour
         }
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
+	audio.SetActive(true);
         character.enabled = true;
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -89,6 +92,7 @@ public class PauseMenu : MonoBehaviour
         helpResume.SetActive(false);
         helpBack.SetActive(true);
         helpMenuUI.SetActive(false);
+	audio.SetActive(true);
         character.enabled = true;
         Time.timeScale = 1f;
         HelpIsOpen = false;
@@ -102,6 +106,7 @@ public class PauseMenu : MonoBehaviour
             horse.GetComponent<AudioSource>().Pause();
         }
         pauseMenuUI.SetActive(true);
+	audio.SetActive(false);
         character.enabled = false;
         Time.timeScale = 0f;
         GameIsPaused = true;
