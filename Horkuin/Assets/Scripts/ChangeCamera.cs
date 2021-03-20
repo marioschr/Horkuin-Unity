@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
+﻿using Cinemachine;
 using UnityEngine;
 
 public class ChangeCamera : MonoBehaviour
@@ -18,7 +16,7 @@ public class ChangeCamera : MonoBehaviour
             if (thirdP)
             {
                 firstPerson.Priority = 21;
-	            Invoke("DisableBody", 0.35f);
+	            Invoke(nameof(DisableBody), 0.35f);
                 thirdP = false;
 		        head.SetActive(true);
             }

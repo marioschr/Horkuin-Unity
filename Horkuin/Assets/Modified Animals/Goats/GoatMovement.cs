@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 public class GoatMovement : MonoBehaviour
@@ -9,8 +7,9 @@ public class GoatMovement : MonoBehaviour
     private Transform positionsTransform;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
+    private static readonly int MoveSpeed = Animator.StringToHash("Move Speed");
+    private static readonly int Eating = Animator.StringToHash("Eating");
 
-    // Start is called before the first frame update
     void Start()
     {
         GetComponent<Transform>().transform.position = positions[Random.Range(0, positions.Length)].transform.position;
@@ -26,11 +25,11 @@ public class GoatMovement : MonoBehaviour
         {
             if (Random.Range(0f, 1f) < 0.2f)
             {
-                animator.SetBool("Eating", true);
+                animator.SetBool(Eating, true);
                 navMeshAgent.speed = 0;
-                Invoke("StopEating",3f);
+                Invoke(nameof(StopEating),3f);
             }
-            else if (animator.GetBool("Eating") == false)
+            else if (animator.GetBool(Eating) == false)
             {
                 navMeshAgent.speed = Random.Range(0.6f, 0.7f);
                 positionsTransform = positions[Random.Range(0, positions.Length)].transform;
@@ -40,11 +39,11 @@ public class GoatMovement : MonoBehaviour
             navMeshAgent.speed = Random.Range(0.6f, 0.7f);
         }
         else {
-            animator.SetFloat("Move Speed", navMeshAgent.velocity.magnitude);
+            animator.SetFloat(MoveSpeed, navMeshAgent.velocity.magnitude);
         }
     }
 
     void StopEating(){
-        animator.SetBool("Eating", false);
+        animator.SetBool(Eating, false);
     }
 }

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -36,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     private float totalSceneProgress;
     private float totalSpawnProgress;
+    private static readonly int FadeOut = Animator.StringToHash("Fade Out");
+
     public IEnumerator GetSceneLoadProgress()
     {
         for (int i = 0; i < scenesLoading.Count; i++)
@@ -76,8 +75,8 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        animator.SetTrigger("Fade Out");
-        Invoke("DisableLoadingScreen",3f);
+        animator.SetTrigger(FadeOut);
+        Invoke(nameof(DisableLoadingScreen),3f);
     }
 
     void DisableLoadingScreen()

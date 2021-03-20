@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class CastleBarkingTriggerPosition : MonoBehaviour
 {
     public GameObject player;
+    private static readonly int Barking = Animator.StringToHash("Barking");
+    private static readonly int MoveSpeed = Animator.StringToHash("Move Speed");
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,8 +19,8 @@ public class CastleBarkingTriggerPosition : MonoBehaviour
             other.GetComponent<NavMeshAgent>().speed = 0;
             other.GetComponent<Transform>().LookAt(new Vector3(player.transform.position.x, other.transform.position.y,
                 player.transform.position.z));
-            other.GetComponent<Animator>().SetFloat("Move Speed", 0f);
-            other.GetComponent<Animator>().SetBool("Barking", true);
+            other.GetComponent<Animator>().SetFloat(MoveSpeed, 0f);
+            other.GetComponent<Animator>().SetBool(Barking, true);
         }
     }
 

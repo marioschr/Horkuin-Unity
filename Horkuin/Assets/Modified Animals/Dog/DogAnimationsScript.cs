@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
@@ -11,12 +8,14 @@ public class DogAnimationsScript : MonoBehaviour
     private Transform transform;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
-    
+    private static readonly int MoveSpeed = Animator.StringToHash("Move Speed");
+
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        navMeshAgent.speed = Random.Range(0.85f, 1.05f);
         transform = positions[Random.Range(0, positions.Length)].transform;
         navMeshAgent.SetDestination(transform.position);
     }
@@ -24,11 +23,12 @@ public class DogAnimationsScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (navMeshAgent.remainingDistance < 0.5f)
+        if (navMeshAgent.remainingDistance < 0.8f)
         {
+            navMeshAgent.speed = Random.Range(0.85f, 1.05f);
             transform = positions[Random.Range(0, positions.Length)].transform;
             navMeshAgent.SetDestination(transform.position);
         }
-        animator.SetFloat("Move Speed", navMeshAgent.velocity.magnitude);
+        animator.SetFloat(MoveSpeed, navMeshAgent.velocity.magnitude);
     }
 }

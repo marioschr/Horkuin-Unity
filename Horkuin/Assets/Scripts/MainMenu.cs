@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
     public Animator animator;
+    private static readonly int FadeIn = Animator.StringToHash("Fade In");
 
     private void Awake()
     {
-        animator.SetTrigger("Fade In");
+        animator.SetTrigger(FadeIn);
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GraphicsQuality", 4), true);
 
     }

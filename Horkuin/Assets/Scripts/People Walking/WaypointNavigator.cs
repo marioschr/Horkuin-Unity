@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
@@ -11,6 +8,8 @@ public class WaypointNavigator : MonoBehaviour
     private Animator animator;
     public Waypoint currentWaypoint;
     public int direction;
+    private static readonly int Property = Animator.StringToHash("Move Speed");
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -25,7 +24,7 @@ public class WaypointNavigator : MonoBehaviour
 
     private void Update()
     {
-        animator.SetFloat("Move Speed", navMeshAgent.velocity.magnitude);
+        animator.SetFloat(Property, navMeshAgent.velocity.magnitude);
         if (navMeshAgent.remainingDistance < 0.3f)
         {
             bool shouldBranch = false;
