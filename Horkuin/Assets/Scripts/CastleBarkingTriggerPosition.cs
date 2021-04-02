@@ -7,9 +7,9 @@ public class CastleBarkingTriggerPosition : MonoBehaviour
     private static readonly int Barking = Animator.StringToHash("Barking");
     private static readonly int MoveSpeed = Animator.StringToHash("Move Speed");
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // Όταν ο παίχτης είναι κοντά στην πύλη και τα σκυλιά φτάσουν και αυτά στην πύλη
     {
-        if (other.tag.Equals("Dog"))
+        if (other.tag.Equals("Dog")) // Ξεκινάνε να γαβγίζουν και να πηδάνε στα κάγκελα
         {
             if (!GetComponent<AudioSource>().isPlaying)
             {
@@ -24,7 +24,7 @@ public class CastleBarkingTriggerPosition : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other) // όσο ο παίχτης είναι κοντά παραμένουν και τα σκυλιά
     {
         if (other.tag.Equals("Dog"))
         {

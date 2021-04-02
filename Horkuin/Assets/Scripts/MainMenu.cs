@@ -2,22 +2,19 @@
 
 public class MainMenu : MonoBehaviour
 {
-    public Animator animator;
-    private static readonly int FadeIn = Animator.StringToHash("Fade In");
-
     private void Awake()
     {
-        animator.SetTrigger(FadeIn);
+        // Ορίζουμε την ποιότητα των γραφικών
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GraphicsQuality", 4), true);
 
     }
 
-    public void StartGame()
+    public void StartGame() // Φορτώνουμε το GameScene
     {
         GameManager.instance.LoadGame();
     }
 
-    public void QuitGame()
+    public void QuitGame() // Έξοδος
     {
         Application.Quit();
     }

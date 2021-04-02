@@ -22,22 +22,21 @@ public class PedestrianSpawner : MonoBehaviour
     {
         int totalcount = 0;
         Transform parentObject = GameObject.FindGameObjectWithTag("Spawns").transform;
-        foreach(GameObject prefab in pedestrianPrefabs) {
+        foreach(GameObject prefab in pedestrianPrefabs) { // Ξεκινάει ένα loop που δημιουργεί χαρακτήρες ανάλογα τον αριθμό που δήλώσαμε
             int count = 0;
-            while (count < Mathf.RoundToInt(pedestriansToSpawn / pedestrianPrefabs.Length))
+            while (count < pedestriansToSpawn / pedestrianPrefabs.Length)
             {
-                GameObject obj = Instantiate(prefab);
-                Transform child = transform.GetChild(Random.Range(0, transform.childCount));
-                obj.transform.parent = parentObject;
-                obj.transform.position = child.position;
-                obj.GetComponent<NavMeshAgent>().enabled = false;
-                obj.GetComponent<WaypointNavigator>().currentWaypoint = child.GetComponent<Waypoint>();
-                obj.GetComponent<NavMeshAgent>().enabled = true;
-
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position + new Vector3(0,100,0), -transform.up, out hit))
+                {
+                    var slopeRotation = Quaternion.FromToRotation(transform.up, hit.normal);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, slopeRotation * transform.rotation, 10 * Time.deltaTime);
+                }
+                Transform child = transform.GetChild(Random.Range(0, transform.childCount)); // Πέρνει τυχαία κάποιο από τα waypoints
+                GameObject obj = Instantiate(prefab, child.position, child.rotation, parentObject);  // Τοποθετείται στο έδαφος στο σημείο αυτό
+                obj.GetComponent<WaypointNavigator>().currentWaypoint = child.GetComponent<Waypoint>();	
                 yield return new WaitForEndOfFrame();
-
-                progress = (float)totalcount / (float)pedestriansToSpawn;
-            
+                progress = (float)totalcount / pedestriansToSpawn; // Το προσθέτουμε στο loading bar
                 count++;
                 totalcount++;
             }

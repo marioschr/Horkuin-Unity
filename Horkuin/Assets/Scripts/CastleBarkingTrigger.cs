@@ -10,9 +10,10 @@ public class CastleBarkingTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Animal"))
+        if (other.tag.Equals("Animal")) // Όταν ο παίχτης πλησιάσει την πύλη
         {
-            if (dog1.GetComponent<Animator>().GetBool(Eating))
+            if (dog1.GetComponent<Animator>().GetBool(Eating)) // Αν τα σκυλιά τρώνε θα σταματήσουν
+                                                               // και τα τρέξουν προς την πύλη
             {
                 dog1.GetComponent<Animator>().SetBool(Eating, false);
             }
@@ -33,7 +34,7 @@ public class CastleBarkingTrigger : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) // Αν ο παίχτης απομακρυνθεί τα σκυλιά συνεχίζουν την περιπολία τους 
     {
         if (other.tag.Equals("Animal"))
         {

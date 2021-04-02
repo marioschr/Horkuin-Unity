@@ -9,39 +9,39 @@ public class PauseMenu : MonoBehaviour
 
     private GameObject[] horses;
     
+    
     private void Start()
     {
         horses = GameObject.FindGameObjectsWithTag("Animal");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.Escape)) // Αν ο χρήστης πατήσει ESC
         {
-            if (!HelpIsOpen) {
-                if (GameIsPaused) {
-                    Resume();
-                } else {
-                    Pause();
-                }
+            if (GameIsPaused) { // Αν είναι paused κάνει resume ή το ανάποδο 
+                Resume();
+                HelpMenuResume();
+            } else {
+                Pause();
             }
         }  
-        else if (Input.GetKeyDown(KeyCode.F1))
+        else if (Input.GetKeyDown(KeyCode.F1)) // F1 για την βοήθεια
         {
             if (!GameIsPaused) {
                 if (HelpIsOpen) {
-                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.lockState = CursorLockMode.Locked; // Κλειδώνουμε και κρύβουμε το cursor
                     Cursor.visible = false;
                     foreach (GameObject horse in horses)
                     {
-                        horse.GetComponent<AudioSource>().UnPause();
-                    }
-		    audio.SetActive(true);
+                        horse.GetComponent<AudioSource>().UnPause(); // Συνεχίζουμε τον ήχο
+                    } 
+                    audio.SetActive(true);
                     helpResume.SetActive(false);
+                    helpBack.SetActive(true);
                     helpMenuUI.SetActive(false);
                     character.enabled = true;
-                    Time.timeScale = 1f;
+                    Time.timeScale = 1f; // Συνεχίζουμε τον χρόνο
                     HelpIsOpen = false;
                 }
                 else {
@@ -53,14 +53,19 @@ public class PauseMenu : MonoBehaviour
                     }
                     helpMenuUI.SetActive(true);
                     helpBack.SetActive(false);
-                    helpResume.SetActive(true);
-		    audio.SetActive(false);
+                    helpResume.SetActive(true); 
+                    audio.SetActive(false);
                     character.enabled = false;
                     Time.timeScale = 0f;
                     HelpIsOpen = true;
                 }
             } 
         }
+    }
+
+    public void ToggleHelpIsOpen()
+    {
+        HelpIsOpen = !HelpIsOpen;
     }
 
     public void Resume() {
@@ -71,8 +76,8 @@ public class PauseMenu : MonoBehaviour
             horse.GetComponent<AudioSource>().UnPause();
         }
         pauseMenuUI.SetActive(false);
-        optionsMenuUI.SetActive(false);
-	audio.SetActive(true);
+        optionsMenuUI.SetActive(false); 
+        audio.SetActive(true);
         character.enabled = true;
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -87,8 +92,8 @@ public class PauseMenu : MonoBehaviour
         }
         helpResume.SetActive(false);
         helpBack.SetActive(true);
-        helpMenuUI.SetActive(false);
-	audio.SetActive(true);
+        helpMenuUI.SetActive(false); 
+        audio.SetActive(true);
         character.enabled = true;
         Time.timeScale = 1f;
         HelpIsOpen = false;
@@ -97,14 +102,14 @@ public class PauseMenu : MonoBehaviour
     public void Pause() {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        foreach (GameObject horse in horses)
+        foreach (GameObject horse in horses) // Σταματάμε τον ήχο
         {
             horse.GetComponent<AudioSource>().Pause();
         }
-        pauseMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(true); // Εμφανίζουμε το UI
 	audio.SetActive(false);
         character.enabled = false;
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; // Σταματάμε τον χρόνο
         GameIsPaused = true;
     }
 
@@ -115,9 +120,7 @@ public class PauseMenu : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(0); // Επιστροφή στο MainMenu
         Time.timeScale = 1f;
-        Destroy(GameObject.FindGameObjectWithTag("Spawns"));
-        SceneManager.UnloadSceneAsync(2);
     }
 }

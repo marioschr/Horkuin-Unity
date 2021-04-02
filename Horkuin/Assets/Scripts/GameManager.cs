@@ -11,77 +11,42 @@ public class GameManager : MonoBehaviour
     public ProgressBar bar;
     public Animator animator;
     public TextMeshProUGUI textField;
+
     private void Awake()
     {
         instance = this;
-
-        SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
     }
 
-    private List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
-    
+
     public void LoadGame()
     {
-        GameObject spawns= new GameObject("Spawns");
-        spawns.gameObject.tag = "Spawns";
-        loadingScreen.gameObject.SetActive(true);
-        scenesLoading.Add(SceneManager.UnloadSceneAsync(1));
-        scenesLoading.Add(SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive));
-        StartCoroutine(GetSceneLoadProgress());
-        StartCoroutine(GetTotalProgress());
+        loadingScreen.gameObject.SetActive(true); // Εμφάνιση του loading screen
+        StartCoroutine(LoadSceneAsync(1)); // Φόρτωση του GameScene
     }
 
     private float totalSceneProgress;
     private float totalSpawnProgress;
     private static readonly int FadeOut = Animator.StringToHash("Fade Out");
 
-    public IEnumerator GetSceneLoadProgress()
+    IEnumerator LoadSceneAsync(int levelIndex)
     {
-        for (int i = 0; i < scenesLoading.Count; i++)
+        AsyncOperation op = SceneManager.LoadSceneAsync(levelIndex);
+
+        while (!op.isDone)
         {
-            while (!scenesLoading[i].isDone)
-            {
-                totalSceneProgress = 0;
-
-                foreach (AsyncOperation operation in scenesLoading)
-                {
-                    totalSceneProgress += operation.progress;
-                }
-                totalSceneProgress = (totalSceneProgress / scenesLoading.Count) * 100f;
-                textField.text = string.Format("Loading Environment: {0} %", totalSceneProgress);
-                yield return null;
-            }
-        }
-    }
-
-    public IEnumerator GetTotalProgress()
-    {
-        float totalProgress = 0;
-
-        while (PedestrianSpawner.current == null || !PedestrianSpawner.current.isDone)
-        {
-            if (PedestrianSpawner.current == null)
-            {
-                totalSpawnProgress = 0;
-            }
-            else
-            {
-                totalSpawnProgress = Mathf.Round(PedestrianSpawner.current.progress * 100f);
-                textField.text = string.Format("Loading Pedestrians: {0} %", totalSpawnProgress);
-            }
-            
-            totalProgress = Mathf.Round((totalSceneProgress + 5 + totalSpawnProgress) / 2f);
-            bar.current = Mathf.RoundToInt(totalProgress);
+            float progress =
+                Mathf.Clamp01(op.progress / .9f); // Γεμίζει το Loading bar ανάλογα το ποσοστό loading του scene
+            textField.text = $"Loading: {progress * 100} %";
+            bar.current = Mathf.RoundToInt(progress * 100);
             yield return null;
         }
 
-        animator.SetTrigger(FadeOut);
-        Invoke(nameof(DisableLoadingScreen),3f);
+        animator.SetTrigger(FadeOut); // Μαυρίζουμε την οθόνη
+        Invoke(nameof(DisableLoadingScreen), 3f);
     }
 
     void DisableLoadingScreen()
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(2));
         loadingScreen.gameObject.SetActive(false);
         fade.gameObject.SetActive(false);
         SceneStarted.instance.Fade();

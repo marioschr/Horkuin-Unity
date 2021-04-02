@@ -8,7 +8,7 @@ public class MusicVolumeSlider : MonoBehaviour
     {
         GetComponent<Slider>().value = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
     }
-    
+    // Όρίζουμε την ένταση της μουσικής
     public void SetVolume(float sliderValue)
     {
         myAudio = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();

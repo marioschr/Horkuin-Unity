@@ -8,15 +8,14 @@ public class ChangeCamera : MonoBehaviour
 
     private bool thirdP = true;
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V)) // Όταν ο χρήστης πατήσει V αλλάζει camera
         {
             if (thirdP)
             {
-                firstPerson.Priority = 21;
-	            Invoke(nameof(DisableBody), 0.35f);
+                firstPerson.Priority = 21; // Αλλάζοντας την πρωτεραιότητα αλλάζει και το ποια κάμερα θα δέιχνει
+	            Invoke(nameof(DisableBody), 0.35f); // Κρύβουμε το σώμα του παίχτη για να μην εμποδίζει την κάμερα σε πρώτο πρόσωπο
                 thirdP = false;
 		        head.SetActive(true);
             }

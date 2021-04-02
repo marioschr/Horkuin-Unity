@@ -4,42 +4,45 @@ using Random = UnityEngine.Random;
 
 public class WaypointNavigator : MonoBehaviour
 {
+    //private WaypointNavigator wayNav;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
     public Waypoint currentWaypoint;
     public int direction;
-    private static readonly int Property = Animator.StringToHash("Move Speed");
-
-    private void Awake()
+    private static readonly int MoveSpeed = Animator.StringToHash("Move Speed");
+    private bool firstTime = true;
+    private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
 
-    private void Start()
-    {
-        direction = Random.Range(0, 2);
-        navMeshAgent.SetDestination(currentWaypoint.GetPosition());
-    }
-
     private void Update()
     {
-        animator.SetFloat(Property, navMeshAgent.velocity.magnitude);
-        if (navMeshAgent.remainingDistance < 0.3f)
+        if (currentWaypoint == null) return;
+        if (firstTime)
         {
+            navMeshAgent.SetDestination(currentWaypoint.GetPosition());
+            firstTime = false;
+        }
+        if (Vector3.Distance(transform.position, currentWaypoint.GetPosition()) < 1f) // Αν έχει πλησιάσει τον στόχο
+        {
+            navMeshAgent.speed = Random.Range(0.90f, 1.1f); // Αλλαγή ταχύτητας
             bool shouldBranch = false;
 
+            // Έλεγχος για διακλάδωση
+            
             if (currentWaypoint.branches != null && currentWaypoint.branches.Count > 0)
             {
                 shouldBranch = Random.Range(0f, 1f) <= currentWaypoint.branchRation;
             }
 
-            if (shouldBranch)
+            if (shouldBranch) // Επιλέγει να αλλάξει δρόμο
             {
                 currentWaypoint = currentWaypoint.branches[Random.Range(0, currentWaypoint
                     .branches.Count - 1)];
             }
-            else
+            else // Διαφορετικά συνεχίζει
             {
                 if (direction == 0)
                 {
@@ -69,5 +72,6 @@ public class WaypointNavigator : MonoBehaviour
             
             navMeshAgent.SetDestination(currentWaypoint.GetPosition());
         }
+        animator.SetFloat(MoveSpeed, navMeshAgent.velocity.magnitude);
     }
 }
