@@ -8,23 +8,14 @@ public class SceneStarted : MonoBehaviour
     public Camera camera;
     public GameObject audio;
     private static readonly int FadeIn = Animator.StringToHash("Fade In");
-
-    void OnEnable() {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
- 
-    void OnDisable() {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
- 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) { // Όταν φορτωθεί το GameScene να γίνει το ActiveScene
-        SceneManager.SetActiveScene(scene);
-    }
     
     private void Awake()
     {
         instance = this;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
+
     public void Fade() // Fade In για ομαλό άνοιγμα της σκηνής
     {
         Cursor.visible = false;

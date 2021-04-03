@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     {
         loadingScreen.gameObject.SetActive(true); // Εμφάνιση του loading screen
         StartCoroutine(LoadSceneAsync(1)); // Φόρτωση του GameScene
+        Cursor.lockState = CursorLockMode.Locked; // Κλειδώνουμε και κρύβουμε το cursor
+        Cursor.visible = false;
     }
 
     private float totalSceneProgress;
